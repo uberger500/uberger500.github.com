@@ -378,5 +378,51 @@ cursor: pointer;
 text-decoration: none;
 }
 </style>
+<script type="text/javascript" src="http://www.blogsmithmedia.com/www.tuaw.com/include/autocomplete.js"></script>
+<script type="text/javascript">
+$(function() {
+	$( "#search-field" ).autocomplete({
+		source: function( request, response ) {
+			$.ajax({
+				url: "http://clients1.google.com/complete/search?hl=en&client=partner&source=gcsc&partnerid=004830092955692134028%3Ah3oyn06c6nq&callback=google.search.CustomSearchControl.GcrcGcsc17089&ds=cse",
+				dataType: "jsonp",
+				data: {
+					featureClass: "P",
+					style: "full",
+					maxRows: 10,
+					q: request.term
+				},
+				success: function( data ) {
+					response( $.map( data[1], function( item,i ) {
+						return {
+							label: item[0],
+							value: item[0]
+						}
+					}));
+				}
+			});
+		},
+		minLength: 2,
+		select: function( event, ui ) {
+                              window.location = "http://tuaw.search.aol.com/search?q="+ui.item.label+"&invocationType=wl-tuaw";
+		},
+		open: function() {
+			$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+		},
+		close: function() {
+			$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+		}
+	});
+});
+
+</script><!-- /H -->
+	<script>var postID = '19508264';</script>
+	
+<script type="text/javascript">
+<!--
+document.write('<scr' + 'ipt src="http://www.tuaw.com/traffic/' + '?t=js&bv=&os=19508264&tz=&lg=&rv=www.google.com%2Furl%3Fsa%3Dt%26rct%3Dj%26q%3Dhow%2520does%2520safari%2520reader%2520work%26source%3Dweb%26cd%3D7%26ved%3D0CF8QFjAG%26url%3Dhttp%253A%252F%252Fwww.tuaw.com%252F2010%252F06%252F08%252Fthe-reader-feature-in-safari-5-can-change-your-whole-web-experie%252F%26ei%3DHKIFUdHMNOTH0wGhjYHQAg%26usg%3DAFQjCNGJonqeBrbNbx6WCoNOIsAg5BePeg%26sig2%3DeWdOJm378ryUMVUY9nEmYA%26bvm%3Dbv.41524429%2Cd.dmQ&rsv=www.google.com&pw=%2F2010%2F06%2F08%2Fthe-reader-feature-in-safari-5-can-change-your-whole-web-experie%2F&cb=397393462" type="text/javascript"></scr' + 'ipt>');
+// -->
+</script><noscript><img src="http://www.tuaw.com/traffic/?t=px&bv=JavaScript+Disabled&os=19508264&tz=default&lg=&rv=www.google.com%2Furl%3Fsa%3Dt%26rct%3Dj%26q%3Dhow%2520does%2520safari%2520reader%2520work%26source%3Dweb%26cd%3D7%26ved%3D0CF8QFjAG%26url%3Dhttp%253A%252F%252Fwww.tuaw.com%252F2010%252F06%252F08%252Fthe-reader-feature-in-safari-5-can-change-your-whole-web-experie%252F%26ei%3DHKIFUdHMNOTH0wGhjYHQAg%26usg%3DAFQjCNGJonqeBrbNbx6WCoNOIsAg5BePeg%26sig2%3DeWdOJm378ryUMVUY9nEmYA%26bvm%3Dbv.41524429%2Cd.dmQ&rsv=www.google.com&pw=%2F2010%2F06%2F08%2Fthe-reader-feature-in-safari-5-can-change-your-whole-web-experie%2F&cb=2023705199" alt="the end" width="1" height="1"border="0" /></noscript>
 </body>
 </html>
+linux.cs.tufts.edu,130.64.23.39 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAIEAw+VbzE7gQxWu561jcnO/Ppo0i+3IiPrbcx2CXcQQG9LQhDpE3zVXE/1XwGdvm2u9C9gJXa87IOk0MCDh7yPHyslr5ic4s1OjCbIbDlE72+BTyfWg7Hr+53OVUi2zkrHWBom1CL3+/qf9fmvDqwocTOu4Nk+DoicMFfB0XuTwn98=
