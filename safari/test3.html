@@ -265,8 +265,118 @@ g.src = 'https://apis.google.com/js/plusone.js';
 s.parentNode.insertBefore(g, s);
 })(document, 'script');
 </script><!-- /H -->
+	<!-- H:51195 --><script type="text/javascript">
+(function($) {
+    var siteDevId = 'ao1Yozogw5VlyAFj'
+    $('#aol-comments').aolComments({
+        channelId : 1616,
+        topicId : '19508264',
+        topicTitle : 'The Reader feature in Safari 5 can change your whole web experience',
+        permalink : 'http://www.tuaw.com/2010/06/08/the-reader-feature-in-safari-5-can-change-your-whole-web-experie/',
+        topicDescription: ' I\'m surprised Apple didn\'t hype the Reader feature in Safari 5 a bit more. It\'s almost a stealth function, and you might not even notice it is there. My',
+        image : 'http://www.blogcdn.com/www.tuaw.com/media/2010/06/safarireadercontrols.jpg',
+        count: '10',
+        directURL : 'http://c.aol.com/',
+        proxyPath : '/aolc/',
+        create_topic : '',
+        fancyScroll : true,
+        adsDivs : '',
+        referrer_url: 'http://www.tuaw.com/2010/06/08/the-reader-feature-in-safari-5-can-change-your-whole-web-experie/',
+        featuredComments : true,
+        tag : 'advertising,instapaper,readability,reader,Safari 5,Internet Tools',
+        bs_key : ''
+    })
+    $('#aol-comments-auth-link').multiAuth({
+        devId: siteDevId,
+        getTokenCallback: function(json) {
+            var $elem = $(this.authLink),
+				response = json.response,
+				userAttr;
+            if (response.statusCode === 200) {
+                userAttr = response.data.userData.attributes;
+            }
+        }
+    });
+})(jQuery);
+</script><!-- /H -->
+
+	<!-- Tip us form -->
+	<!-- H:39001 --><div class="tipus_popup_holder" id="tipus_popup_holder" style="display:none">    
+
+      <div class="tipus_overlay" id="tipus_overlay"></div>
+
+      <div class="tipus_popup">
+
+          <div class="tipus_content">
+
+            <div class="header">
+              <h2>Send us a tip</h2>
+              <p>We value our readership, especially when we receive tips which help us write compelling content. Use this form to send us a tip.</p>
+              <p>Note: Some fields are <strong>required</strong>.</p> 
+            </div> <!-- header -->
+         
+            <div class="body">
+            <form id="tipUsForm">
+            <input type='hidden' name='RememberMe' value='0' />
+            <label for="AuthorName">Name<input type="text" class="text" name="AuthorName" value="" /><br />
+            <label for="AuthorEmail">Your email <span>(required)</span></label><input type="text" class="text" name="AuthorEmail" value="" /><br />
+            <label for="Subject">Subject:</label><input type="text" class="text" name="Subject" value="" /><br />
+            <label for="Comments">Message: <span>(required)</span></label></label><textarea name="Comments"></textarea>
+                  
+                  <div class="tools">
+                      <a href="#" id="tipus_submit" class="submit button">Submit</a>
+                      <a href="#" id="tipus_cancel" class="cancel button">Close</a>
+                  </div>
+
+            </div> <!-- body -->
+
+              </form>
+
+          </div> <!-- tipus_content -->
+
+      </div> <!-- tipus_popup -->
 
 </div><!-- /H -->
+
+	<!-- Aol Comments JS-->
+	<!-- H:39002 --><!-- /H -->
+
+	<!-- Search Autocomplete-->
+	<!-- H:90001 --><link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/start/jquery-ui.css" />
+<style>
+.ui-autocomplete {
+background: #fff;
+background: rgba(255,255,255,0.97);
+border: 1px solid #ccc;
+border-radius: 0;
+font-size: 11px;
+z-index: 2147483647 !important;
+margin-top: 3px;
+padding: 0;
+width: 300px !important;
+list-style: none;
+text-indent: 0px; 
+}
+
+
+
+.ui-autocomplete .ui-menu-item a {
+border-bottom: 1px solid #eee;
+border-radius: 0;
+color: #666;
+display: block;
+padding: 7px 5px;
+}
+
+.ui-autocomplete .ui-menu-item a:hover, #ui-active-menuitem {
+background: #999!important;
+border: none;
+border-bottom: 1px solid #eee;
+border-radius: none;
+color: #fff;
+cursor: pointer;
+text-decoration: none;
+}
 </style>
 </body>
 </html>
