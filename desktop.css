@@ -1,0 +1,36 @@
+
+dy {
+    font-family: 'Helvetica Neue', Helvetica, Arial, serif;
+    font-size: 14px; 
+    color: black;
+    background: #99FFDD;
+}
+
+ul, h1, h2, h3, p {
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+p {
+	font-size: 16px;
+	}
+	
+p.one {
+	background-color: #99FF33;
+	}
+	
+li.one {
+    background-color: #ffff00;
+}
+
+li.two {
+    background-color: #ffa467;	
+}
+
+h1 {
+    border: black;
+    border-width: 2px;
+    border-style: solid;
+}
+
+
