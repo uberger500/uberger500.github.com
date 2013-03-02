@@ -13,6 +13,7 @@ function getMyLocation() {
                 mylng = position.coords.longitude;
 		
 		mypos = new google.maps.LatLng(mylat, mylng);
+		var image = 'testmarker2.png';
 
                 var marker = new google.maps.Marker({
                         position: mypos,
@@ -44,8 +45,6 @@ function initialize()
 		center: landmark,
 		mapTypeId: google.maps.MapTypeId.ROADMAP};
 
-		var image = 'testmarker2.png';
-			
 			
 		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 		getMyLocation();
