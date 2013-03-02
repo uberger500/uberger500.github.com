@@ -1,6 +1,8 @@
 var mylat;
 var mylng;
 var stations = [];
+var ashmontbranch = [];
+var braintreebranch = [];
 var tmarkers = [];
 var mypos;
 var Trequest = new XMLHttpRequest();
@@ -218,33 +220,35 @@ function initialize()
                 st = new google.maps.LatLng(42.320685,-71.052391);
                 tmarkers.push(new google.maps.Marker({position: st, title: "JFK/UMass Station", icon: timage}));
                 stations.push(st);
+   		ashmontbranch.push(st);
+		braintreebranch.push(st);
                 st = new google.maps.LatLng(42.31129,-71.053331);
                 tmarkers.push(new google.maps.Marker({position: st, title: "Savin Hill Station", icon: timage}));
-                stations.push(st);
+		ashmontbranch.push(st);
                 st = new google.maps.LatLng(42.300093,-71.061667);
                 tmarkers.push(new google.maps.Marker({position: st, title: "Fields Corner Station", icon: timage}));
-                stations.push(st);
+		ashmontbranch.push(st);
                 st = new google.maps.LatLng(42.29312583,-71.06573796);
                 tmarkers.push(new google.maps.Marker({position: st, title: "Shawmut Station", icon: timage}));
-                stations.push(st);
+		ashmontbranch.push(st);
                 st = new google.maps.LatLng(42.284652,-71.064489);
                 tmarkers.push(new google.maps.Marker({position: st, title: "Ashmont Station", icon: timage}));
-                stations.push(st);
+		ashmontbranch.push(st);
                 st = new google.maps.LatLng(42.275275,-71.029583);
                 tmarkers.push(new google.maps.Marker({position: st, title: "North Quincy Station", icon: timage}));
-                stations.push(st);
+		braintreebranch.push(st);
                 st = new google.maps.LatLng(42.2665139,-71.0203369);
                 tmarkers.push(new google.maps.Marker({position: st, title: "Wollaston Station", icon: timage}));
-                stations.push(st);
+                braintreebranch.push(st);
                 st = new google.maps.LatLng(42.251809,-71.005409);
                 tmarkers.push(new google.maps.Marker({position: st, title: "Quincy Center Station", icon: timage}));
-                stations.push(st);
+                braintreebranch.push(st);
                 st = new google.maps.LatLng(42.233391,-71.007153);
                 tmarkers.push(new google.maps.Marker({position: st, title: "Quincy Adams Station", icon: timage}));
-                stations.push(st);
+                braintreebranch.push(st);
                 st = new google.maps.LatLng(42.2078543,-71.0011385);
                 tmarkers.push(new google.maps.Marker({position: st, title: "Braintree Station", icon: timage}));
-                stations.push(st);
+                braintreebranch.push(st);
 
 		for (var m in tmarkers) {
 			tmarkers[m].setMap(map);
@@ -257,6 +261,24 @@ function initialize()
 		strokeWeight: 10
 		});
 		redLine.setMap(map);	
+
+                redLineAshmont = new google.maps.Polyline({
+                path: ashmontbranch,
+                strokeColor: "#FF0000",
+                strokeOpacity: 1.0,
+                strokeWeight: 10
+                });
+                redLineAshMont.setMap(map);
+
+                redLineBraintree = new google.maps.Polyline({
+                path: braintreebranch,
+                strokeColor: "#FF0000",
+                strokeOpacity: 1.0,
+                strokeWeight: 10
+                });
+                redLineBraintree.setMap(map);
+
+
 		getMyLocation();
 	}
 
