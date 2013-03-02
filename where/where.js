@@ -15,8 +15,9 @@ console.log("ingetmyloc3");
             navigator.geolocation.getCurrentPosition(function(position) {
                 mylat = position.coords.latitude;
                 mylng = position.coords.longitude;
-document.write(mylat);
-            });
+            
+console.log(mylat);
+	});
         }
         else {
 console.log("ingetmyloc4");
