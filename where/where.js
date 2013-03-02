@@ -11,7 +11,7 @@ function getMyLocation() {
             navigator.geolocation.getCurrentPosition(function(position) {
                 mylat = position.coords.latitude;
                 mylng = position.coords.longitude;
-console.log(mylat);
+console.log(mylat + "func");
 		});
         }
         else {
