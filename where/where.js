@@ -20,27 +20,28 @@ function getMyLocation() {
         }
     }
 
-	function renderMap() {
+function renderMap() {
 	
-		mypos = new google.maps.LatLng(mylat, mylng);
+	mypos = new google.maps.LatLng(mylat, mylng);
                 
-		map.panTo(mypos);
+	map.panTo(mypos);
 
-		var image = 'testmarker2.png';
+	var image = 'testmarker2.png';
+        
+	var marker = new google.maps.Marker({
+		position: mypos,
+                title: "I am here",
+                icon: image
+                });
+        marker.setMap(map);
 
-                var marker = new google.maps.Marker({
-                        position: mypos,
-                        title: "I am here",
-                        icon: image
-                        });
-                marker.setMap(map);
+        var infowindow = new google.maps.InfoWindow();
 
-                var infowindow = new google.maps.InfoWindow();
-
-                google.maps.event.addListener(marker, 'click', function() {
-                        infowindow.setContent(marker.title);
-                        infowindow.open(map,marker);
-                        });
+        google.maps.event.addListener(marker, 'click', function() {
+                infowindow.setContent(marker.title);
+                infowindow.open(map,marker);
+                });
+	}
 
 function initialize()
 	{
