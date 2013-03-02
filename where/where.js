@@ -249,7 +249,14 @@ function initialize()
 		for (var m in tmarkers) {
 			tmarkers[m].setMap(map);
 		}
-			
+		
+		redLine = new google.maps.Polyline({
+		path: stations,
+		strokeColor: "#FF0000",
+		strokeOpacity: 1.0,
+		strokeWeight: 10
+		});
+		redLine.setMap(map);	
 		getMyLocation();
 	}
 
