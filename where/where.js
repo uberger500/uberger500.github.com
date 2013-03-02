@@ -58,21 +58,19 @@ function Tcallback() {
 		if (request.readyState == 4 && request.status == 200) {
            		input = JSON.parse(request.responseText);
          		console.log(input);		}
-         		}
-		
-			else { 
-				if(request.readyState == 4 && request.status == 0) {
-					throw "noresponse";
-					}
+         		
+		else { 
+			if(request.readyState == 4 && request.status == 0) {
+				throw "noresponse";
+				}
 			}
-		}	
-		
 		catch(error) {
 			if (error == "noresponse") {
 				alert("no data returned");
 				}
 			}
-	}	
+	}
+}	
 function CWparse() {
 	request.open("GET", "http://messagehub.herokuapp.com/a3.json", true);
         request.send(null);
