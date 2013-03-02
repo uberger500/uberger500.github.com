@@ -4,8 +4,6 @@ var markers = [];
 var mypos;
 
 function getMyLocation() {
-        mylat = -99999;
-        mylng = -99999;
 
         if (navigator.geolocation) {
             // the navigator.geolocation object is supported on your browser
