@@ -4,7 +4,8 @@ var markers = [];
 var mypos;
 
 function getMyLocation() {
-
+	mylat = -99999;
+        mylng = -99999;
         if (navigator.geolocation) {
             // the navigator.geolocation object is supported on your browser
             navigator.geolocation.getCurrentPosition(function(position) {
@@ -32,7 +33,7 @@ function initialize()
 			
 			
 		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-	
+	console.log(mylat);
 		getMyLocation();
 console.log("ingetmyloc4");
 console.log(mylat);
