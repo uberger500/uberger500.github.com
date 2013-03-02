@@ -49,7 +49,7 @@ function initialize()
 		var landmark = new google.maps.LatLng(42.3599611, -71.0567528);
 		
 		myOptions = {
-		zoom: 12, // The larger the zoom number, the bigger the zoom
+		zoom: 10, // The larger the zoom number, the bigger the zoom
 		center: landmark,
 		mapTypeId: google.maps.MapTypeId.ROADMAP};
 
