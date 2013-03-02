@@ -1,7 +1,9 @@
 var mylat;
 var mylng;
-var markers = [];
+var stations = [];
 var mypos;
+var Trequest = new XMLHttpRequest();
+var CWrequest = new XMLHttpRequest();
 
 function getMyLocation() {
 	mylat = -99999;
@@ -41,7 +43,41 @@ function renderMap() {
                 infowindow.setContent(marker.title);
                 infowindow.open(map,marker);
                 });
+Tparse();
+	
+   }
+
+function Tparse() {
+	request.open("GET", "http://mbtamap-cedar.herokuapp.com/mapper/redline.json", true);
+	request.send(null);
+	request.onreadystatechange = Tcallback;
 	}
+
+function Tcallback() {
+	try {
+		if (request.readyState == 4 && request.status == 200) {
+           		input = JSON.parse(request.responseText);
+         		console.log(input);		}
+         		}
+		
+			else { 
+				if(request.readyState == 4 && request.status == 0) {
+					throw "noresponse";
+					}
+			}
+		}	
+		
+		catch(error) {
+			if (error == "noresponse") {
+				alert("no data returned");
+				}
+			}
+	}	
+function CWparse() {
+	request.open("GET", "http://messagehub.herokuapp.com/a3.json", true);
+        request.send(null);
+        request.onreadystatechange = CWcallback;
+}
 
 function initialize()
 	{
@@ -55,5 +91,11 @@ function initialize()
 
 			
 		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+	
+	
+
+
 		getMyLocation();
 	}
+
+
