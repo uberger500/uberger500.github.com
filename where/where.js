@@ -11,8 +11,23 @@ function getMyLocation() {
             navigator.geolocation.getCurrentPosition(function(position) {
                 mylat = position.coords.latitude;
                 mylng = position.coords.longitude;
-console.log(mylat + "func");
-		});
+		
+		mypos = new google.maps.LatLng(mylat, mylng);
+
+                var marker = new google.maps.Marker({
+                        position: mypos,
+                        title: "I am here",
+                        icon: image
+                        });
+                marker.setMap(map);
+
+                var infowindow = new google.maps.InfoWindow();
+
+                google.maps.event.addListener(marker, 'click', function() {
+                        infowindow.setContent(marker.title);
+                        infowindow.open(map,marker);
+                        });
+	});
         }
         else {
 
@@ -34,19 +49,4 @@ function initialize()
 			
 		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 		getMyLocation();
-		mypos = new google.maps.LatLng(mylat, mylng);
-
-		var marker = new google.maps.Marker({
-			position: mypos,
-			title: "I am here",
-			icon: image
-			});
-		marker.setMap(map);		
-		
-		var infowindow = new google.maps.InfoWindow();
-
-		google.maps.event.addListener(marker, 'click', function() {
-			infowindow.setContent(marker.title);
-			infowindow.open(map,marker);
-			});
 	}
