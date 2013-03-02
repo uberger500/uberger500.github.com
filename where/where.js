@@ -43,7 +43,8 @@ function renderMap() {
                 infowindow.setContent(marker.title);
                 infowindow.open(map,marker);
                 });
-Tparse();
+	Tparse();
+	CWparse();
 	
    }
 
@@ -67,16 +68,34 @@ function Tcallback() {
 	}
 	catch(error) {
 		if (error == "noresponse") {
-		alert("no data returned");
+		alert("no MBTA data returned");
 		}
 	}
 }	
 function CWparse() {
-	request.open("GET", "http://messagehub.herokuapp.com/a3.json", true);
-        request.send(null);
-        request.onreadystatechange = CWcallback;
+	CWrequest.open("GET", "http://messagehub.herokuapp.com/a3.json", true);
+        CWrequest.send(null);
+        CWrequest.onreadystatechange = CWcallback;
 }
 
+function CWcallback() {
+        try {
+                if (CWrequest.readyState == 4 && CWrequest.status == 200) {
+                        input = JSON.parse(CWrequest.responseText);
+                        console.log(input);             }
+
+                else {
+                        if(CWrequest.readyState == 4 && CWrequest.status == 0) {
+                                throw "noresponse";
+                                }
+                        }
+        }
+        catch(error) {
+                if (error == "noresponse") {
+                alert("no Carmen and Waldo data returned");
+                }
+        }
+}
 function initialize()
 	{
 		//intial map location Faneuil Hall
