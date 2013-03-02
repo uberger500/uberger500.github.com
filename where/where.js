@@ -64,11 +64,11 @@ function Tcallback() {
 				throw "noresponse";
 				}
 			}
-		catch(error) {
-			if (error == "noresponse") {
-				alert("no data returned");
-				}
-			}
+	}
+	catch(error) {
+		if (error == "noresponse") {
+		alert("no data returned");
+		}
 	}
 }	
 function CWparse() {
