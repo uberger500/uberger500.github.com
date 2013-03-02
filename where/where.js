@@ -119,9 +119,23 @@ function renderCW() {
 	if (input[i].name == "Carmen Sandiego") {
 	
 	var image = 'carmen.png'; 
+	
+	var marker = new google.maps.Marker({
+                position: pos,
+                title: input[i].name,
+                icon: image
+                });
+        marker.setMap(map);
+
+        var infowindow = new google.maps.InfoWindow();
+
+        google.maps.event.addListener(marker, 'click', function() {
+                infowindow.setContent(marker.title);
+                infowindow.open(map,marker);
+                });
+
 	} else if (input[i].name == "Waldo") {
 	var image = 'waldo.png';
-	}
         
 	var marker = new google.maps.Marker({
 		position: pos,
@@ -138,6 +152,7 @@ function renderCW() {
                 });	
 	}
 }
+
 function distcalc(lat1, lng1, lat2, lng2) {
 
 	//from www.movable-type.co.uk/scripts/latlong.html
