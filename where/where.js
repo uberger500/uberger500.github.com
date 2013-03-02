@@ -36,19 +36,21 @@ function initialize()
 	
 		getMyLocation();
 console.log("ingetmyloc4");
+console.log(mylat);
+console.log(mylng);
 		mypos = new google.maps.LatLng(mylat, mylng);
 
-		var testmarker = new google.maps.Marker({
+		var marker = new google.maps.Marker({
 			position: mypos,
 			title: "I am here",
 			icon: image
 			});
-		testmarker.setMap(map);		
+		marker.setMap(map);		
 		
 		var infowindow = new google.maps.InfoWindow();
 
-		google.maps.event.addListener(testmarker, 'click', function() {
-			infowindow.setContent(testmarker.title);
-			infowindow.open(map,testmarker);
+		google.maps.event.addListener(marker, 'click', function() {
+			infowindow.setContent(marker.title);
+			infowindow.open(map,marker);
 			});
 	}
