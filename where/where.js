@@ -119,7 +119,7 @@ function renderCW() {
 	if (input[i].name == "Carmen Sandiego") {
 	
 	var image = 'carmen.png'; 
-	} else {
+	} else if (input[i].name == "Waldo") {
 	var image = 'waldo.png';
 	}
         
