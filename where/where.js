@@ -48,19 +48,19 @@ Tparse();
    }
 
 function Tparse() {
-	request.open("GET", "http://mbtamap-cedar.herokuapp.com/mapper/redline.json", true);
-	request.send(null);
-	request.onreadystatechange = Tcallback;
+	Trequest.open("GET", "http://mbtamap-cedar.herokuapp.com/mapper/redline.json", true);
+	Trequest.send(null);
+	Trequest.onreadystatechange = Tcallback;
 	}
 
 function Tcallback() {
 	try {
-		if (request.readyState == 4 && request.status == 200) {
-           		input = JSON.parse(request.responseText);
+		if (Trequest.readyState == 4 && Trequest.status == 200) {
+           		input = JSON.parse(Trequest.responseText);
          		console.log(input);		}
          		
 		else { 
-			if(request.readyState == 4 && request.status == 0) {
+			if(Trequest.readyState == 4 && Trequest.status == 0) {
 				throw "noresponse";
 				}
 			}
