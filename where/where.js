@@ -151,8 +151,8 @@ function renderCW() {
                 infowindow.open(map,marker);
                 });	
 	}
+	}
 }
-
 function distcalc(lat1, lng1, lat2, lng2) {
 
 	//from www.movable-type.co.uk/scripts/latlong.html
