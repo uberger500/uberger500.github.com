@@ -120,14 +120,14 @@ function distcalc(lat1, lng1, lat2, lng2) {
 	return d;
 }
 
-function shortestdist(lat, lng, []) {
+function shortestdist(lat, lng, stations) {
 	var shortest = 9999;
 	var shortestid;
-	for (i=0; i <[].length; i++) {
-		var testdist = distcalc(lat, lng, [i].loc.latitude, [i].loc.longitude)
+	for (i=0; i <stations.length; i++) {
+		var testdist = distcalc(lat, lng, stations[i].loc.latitude, stations[i].loc.longitude)
 		if (testdist <= shortest) {
 			shortest = testdist;
-			shortestid = [i].PlatformKey;
+			shortestid = stations[i].PlatformKey;
 	}		
 	}
 	return shortest;
