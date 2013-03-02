@@ -11,8 +11,21 @@ function getMyLocation() {
             navigator.geolocation.getCurrentPosition(function(position) {
                 mylat = position.coords.latitude;
                 mylng = position.coords.longitude;
-		
+		renderMap();	
+	});
+        }
+        else {
+
+            alert("Geolocation is not supported by your web browser.  What a shame!");
+        }
+    }
+
+	function renderMap() {
+	
 		mypos = new google.maps.LatLng(mylat, mylng);
+                
+		map.panTo(mypos);
+
 		var image = 'testmarker2.png';
 
                 var marker = new google.maps.Marker({
@@ -28,13 +41,7 @@ function getMyLocation() {
                         infowindow.setContent(marker.title);
                         infowindow.open(map,marker);
                         });
-	});
-        }
-        else {
 
-            alert("Geolocation is not supported by your web browser.  What a shame!");
-        }
-    }
 function initialize()
 	{
 		//intial map location Faneuil Hall
