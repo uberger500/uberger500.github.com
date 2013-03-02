@@ -268,7 +268,7 @@ function initialize()
                 strokeOpacity: 1.0,
                 strokeWeight: 10
                 });
-                redLineAshMont.setMap(map);
+                redLineAshmont.setMap(map);
 
                 redLineBraintree = new google.maps.Polyline({
                 path: braintreebranch,
