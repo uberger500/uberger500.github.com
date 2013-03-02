@@ -1,6 +1,7 @@
 var mylat;
 var mylng;
 var stations = [];
+var tmarkers = [];
 var mypos;
 var Trequest = new XMLHttpRequest();
 var CWrequest = new XMLHttpRequest();
@@ -176,6 +177,79 @@ function initialize()
 			
 		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
+		st = new google.maps.LatLng(42.395428,-71.142483);
+		tmarkers.push(new google.maps.Marker({position: st, title: "Alewife Station", icon: timage}));
+		stations.push(st);
+                st = new google.maps.LatLng(42.39674,-71.121815);
+                tmarkers.push(new google.maps.Marker({position: st, title: "Davis Station", icon: timage}));
+                stations.push(st);
+                st = new google.maps.LatLng(42.3884,-71.119149);
+                tmarkers.push(new google.maps.Marker({position: st, title: "Porter Square Station", icon: timage}));
+                stations.push(st);
+                st = new google.maps.LatLng(42.373362,-71.118956);
+                tmarkers.push(new google.maps.Marker({position: st, title: "Harvard Square Station", icon: timage}));
+                stations.push(st);
+                st = new google.maps.LatLng(42.365486,-71.103802);
+                tmarkers.push(new google.maps.Marker({position: st, title: "Central Square Station", icon: timage}));
+                stations.push(st);
+                st = new google.maps.LatLng(42.36249079,-71.08617653);
+                tmarkers.push(new google.maps.Marker({position: st, title: "Kendall/MIT Station", icon: timage}));
+                stations.push(st);
+                st = new google.maps.LatLng(42.361166,-71.070628);
+                tmarkers.push(new google.maps.Marker({position: st, title: "Charles/MGH Station", icon: timage}));
+                stations.push(st);
+                st = new google.maps.LatLng(42.35639457,-71.0624242);
+                tmarkers.push(new google.maps.Marker({position: st, title: "Park St. Station", icon: timage}));
+                stations.push(st);
+                st = new google.maps.LatLng(42.355518,-71.060225);
+                tmarkers.push(new google.maps.Marker({position: st, title: "Downtown Crossing Station", icon: timage}));
+                stations.push(st);
+                st = new google.maps.LatLng(42.352271,-71.055242);
+                tmarkers.push(new google.maps.Marker({position: st, title: "South Station", icon: timage}));
+                stations.push(st);
+                st = new google.maps.LatLng(42.342622,-71.056967);
+                tmarkers.push(new google.maps.Marker({position: st, title: "Broadway Station", icon: timage}));
+                stations.push(st);
+                st = new google.maps.LatLng(42.330154,-71.057655);
+                tmarkers.push(new google.maps.Marker({position: st, title: "Andrew Station", icon: timage}));
+                stations.push(st);
+                st = new google.maps.LatLng(42.320685,-71.052391);
+                tmarkers.push(new google.maps.Marker({position: st, title: "JFK/UMass Station", icon: timage}));
+                stations.push(st);
+                st = new google.maps.LatLng(42.31129,-71.053331);
+                tmarkers.push(new google.maps.Marker({position: st, title: "Savin Hill Station", icon: timage}));
+                stations.push(st);
+                st = new google.maps.LatLng(42.300093,-71.061667);
+                tmarkers.push(new google.maps.Marker({position: st, title: "Fields Corner Station", icon: timage}));
+                stations.push(st);
+                st = new google.maps.LatLng(42.29312583,-71.06573796);
+                tmarkers.push(new google.maps.Marker({position: st, title: "Shawmut Station", icon: timage}));
+                stations.push(st);
+                st = new google.maps.LatLng(42.284652,-71.064489);
+                tmarkers.push(new google.maps.Marker({position: st, title: "Ashmont Station", icon: timage}));
+                stations.push(st);
+                st = new google.maps.LatLng(42.275275,-71.029583);
+                tmarkers.push(new google.maps.Marker({position: st, title: "North Quincy Station", icon: timage}));
+                stations.push(st);
+                st = new google.maps.LatLng(42.2665139,-71.0203369);
+                tmarkers.push(new google.maps.Marker({position: st, title: "Wollaston Station", icon: timage}));
+                stations.push(st);
+                st = new google.maps.LatLng(42.251809,-71.005409);
+                tmarkers.push(new google.maps.Marker({position: st, title: "Quincy Center Station", icon: timage}));
+                stations.push(st);
+                st = new google.maps.LatLng(42.233391,-71.007153);
+                tmarkers.push(new google.maps.Marker({position: st, title: "Quincy Adams Station", icon: timage}));
+                stations.push(st);
+                st = new google.maps.LatLng(42.2078543,-71.0011385);
+                tmarkers.push(new google.maps.Marker({position: st, title: "Braintree Station", icon: timage}));
+                stations.push(st);
+
+		for (var m in markers) {
+			markers[m].setMap(map);
+			google.maps.event.addListener(markers[m], 'click', function() {
+			}
+		}
+			
 		getMyLocation();
 	}
 
