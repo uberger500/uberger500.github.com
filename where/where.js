@@ -246,8 +246,6 @@ function initialize()
 
 		for (var m in markers) {
 			markers[m].setMap(map);
-			google.maps.event.addListener(markers[m], 'click', function() {
-			}
 		}
 			
 		getMyLocation();
