@@ -10,6 +10,7 @@ function getMyLocation() {
             navigator.geolocation.getCurrentPosition(function(position) {
                 mylat = position.coords.latitude;
                 mylng = position.coords.longitude;
+console.log(mylat);
 		});
         }
         else {
