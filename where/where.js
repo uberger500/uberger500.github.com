@@ -33,11 +33,7 @@ function initialize()
 			
 			
 		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-	console.log(mylat);
 		getMyLocation();
-console.log("ingetmyloc4");
-console.log(mylat);
-console.log(mylng);
 		mypos = new google.maps.LatLng(mylat, mylng);
 
 		var marker = new google.maps.Marker({
