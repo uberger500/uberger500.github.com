@@ -247,7 +247,7 @@ function initialize()
                 stations.push(st);
 
 		for (var m in markers) {
-			markers[m].setMap(map);
+			tmarkers[m].setMap(map);
 		}
 			
 		getMyLocation();
