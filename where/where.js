@@ -41,7 +41,6 @@ console.log("ingetmyloc4");
 		var testmarker = new google.maps.Marker({
 			position: mypos,
 			title: "I am here",
-			zoom: 12,
 			icon: image
 			});
 		testmarker.setMap(map);		
