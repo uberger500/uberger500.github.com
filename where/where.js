@@ -113,8 +113,12 @@ function renderCW() {
 	
 	pos = new google.maps.LatLng(input[i].loc.latitude, input[i].loc.longitude);
                 
-
-	var image = 'testmarker2.png';
+	if (input[i].name == "Carmen Sandiego") {
+	
+	var image = 'carmen.png'; 
+	} else {
+	var image = 'waldo.png';
+	}
         
 	var marker = new google.maps.Marker({
 		position: pos,
