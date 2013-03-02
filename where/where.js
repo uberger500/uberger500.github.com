@@ -59,7 +59,9 @@ function Tcallback() {
 		if (Trequest.readyState == 4 && Trequest.status == 200) {
            		input = JSON.parse(Trequest.responseText);
          		console.log(input);		}
-         		
+console.log(input[0].InformationType);
+console.log(input[1].PlatformKey);
+console.log(input[2].PlatformKey);         		
 		else { 
 			if(Trequest.readyState == 4 && Trequest.status == 0) {
 				throw "noresponse";
@@ -83,7 +85,9 @@ function CWcallback() {
                 if (CWrequest.readyState == 4 && CWrequest.status == 200) {
                         input = JSON.parse(CWrequest.responseText);
                         console.log(input);             }
-
+console.log(input[0].loc.latitude);
+console.log(input[0].name);
+console.log(input[1].note);
                 else {
                         if(CWrequest.readyState == 4 && CWrequest.status == 0) {
                                 throw "noresponse";
