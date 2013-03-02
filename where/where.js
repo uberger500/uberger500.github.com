@@ -4,9 +4,13 @@ var markers = [];
 var mypos;
 
 function getMyLocation() {
+console.log("ingetmyloc");
         mylat = -99999;
         mylng = -99999;
+console.log("ingetmyloc2");
+
         if (navigator.geolocation) {
+console.log("ingetmyloc3");
             // the navigator.geolocation object is supported on your browser
             navigator.geolocation.getCurrentPosition(function(position) {
                 mylat = position.coords.latitude;
@@ -14,6 +18,8 @@ function getMyLocation() {
             });
         }
         else {
+console.log("ingetmyloc4");
+
             alert("Geolocation is not supported by your web browser.  What a shame!");
         }
     }
