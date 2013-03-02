@@ -177,6 +177,8 @@ function initialize()
 			
 		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
+		var timage = 'timage.png';
+
 		st = new google.maps.LatLng(42.395428,-71.142483);
 		tmarkers.push(new google.maps.Marker({position: st, title: "Alewife Station", icon: timage}));
 		stations.push(st);
