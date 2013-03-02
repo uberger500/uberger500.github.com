@@ -4,6 +4,8 @@ var stations = [];
 var mypos;
 var Trequest = new XMLHttpRequest();
 var CWrequest = new XMLHttpRequest();
+var carmen;
+var waldo;
 
 function getMyLocation() {
 	mylat = -99999;
@@ -86,6 +88,8 @@ function CWcallback() {
         try {
                 if (CWrequest.readyState == 4 && CWrequest.status == 200) {
                         input = JSON.parse(CWrequest.responseText);
+		renderCW();
+
                         console.log(input);             
 console.log(input[0].loc.latitude);
 console.log(input[0].name);
@@ -104,6 +108,29 @@ console.log(input[1].note);
         }
 }
 
+function renderCW() {
+	for (i=0; input.length; i++) {
+	
+	pos = new google.maps.LatLng(input[i].loc.latitude, input[i].loc.longitude);
+                
+
+	var image = 'testmarker2.png';
+        
+	var marker = new google.maps.Marker({
+		position: pos,
+                title: input[i].name,
+                icon: image
+                });
+        marker.setMap(map);
+
+        var infowindow = new google.maps.InfoWindow();
+
+        google.maps.event.addListener(marker, 'click', function() {
+                infowindow.setContent(marker.title);
+                infowindow.open(map,marker);
+                });	
+	}
+}
 function distcalc(lat1, lng1, lat2, lng2) {
 
 	//from www.movable-type.co.uk/scripts/latlong.html
