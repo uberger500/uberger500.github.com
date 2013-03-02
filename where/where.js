@@ -74,6 +74,7 @@ console.log(input[2].PlatformKey);
 		alert("no MBTA data returned");
 		}
 	}
+
 }	
 function CWparse() {
 	CWrequest.open("GET", "http://messagehub.herokuapp.com/a3.json", true);
@@ -102,6 +103,36 @@ console.log(input[1].note);
                 }
         }
 }
+
+function distcalc(lat1, lng1, lat2, lng2) {
+
+	//from www.movable-type.co.uk/scripts/latlong.html
+	var R = 6371; 
+	var dLat = (lat2-lat1).toRad();
+	var dLon = (lon2-lon1).toRad();
+	var lat1 = lat1.toRad();
+	var lat2 = lat2.toRad();
+
+	var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+        	Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+	var d = R * c;
+	return d;
+}
+
+function shortestdist(lat, lng, []) {
+	var shortest = 9999;
+	var shortestid;
+	for (i=0; i <[].length; i++) {
+		var testdist = distcalc(lat, lng, [i].loc.latitude, [i].loc.longitude)
+		if (testdist <= shortest) {
+			shortest = testdist;
+			shortestid = [i].PlatformKey;
+	}		
+	}
+	return shortest;
+	}
+
 function initialize()
 	{
 		//intial map location Faneuil Hall
@@ -111,12 +142,8 @@ function initialize()
 		zoom: 10, // The larger the zoom number, the bigger the zoom
 		center: landmark,
 		mapTypeId: google.maps.MapTypeId.ROADMAP};
-
 			
 		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-	
-	
-
 
 		getMyLocation();
 	}
