@@ -246,7 +246,7 @@ function initialize()
                 tmarkers.push(new google.maps.Marker({position: st, title: "Braintree Station", icon: timage}));
                 stations.push(st);
 
-		for (var m in markers) {
+		for (var m in tmarkers) {
 			tmarkers[m].setMap(map);
 		}
 			
