@@ -108,7 +108,7 @@ function renderCW() {
 	pos = new google.maps.LatLng(input[i].loc.latitude, input[i].loc.longitude);
                 
 	if (input[i].name == "Carmen Sandiego") {
-	
+console.log(input[i].loc.latitude);	
 	var image = 'carmen.png'; 
 	
 	var marker1 = new google.maps.Marker({
