@@ -113,17 +113,21 @@ console.log(input[1].note);
 }
 
 
+
 function renderCW() {
-        for (i=0; input.length; i++) {
+	for (i=0; input.length; i++) {
 
-        pos = new google.maps.LatLng(input[i].loc.latitude, input[i].loc.longitude);
+	pos = new google.maps.LatLng(input[i].loc.latitude, input[i].loc.longitude);
+                
+	if (input[i].name == "Carmen Sandiego") {
 
-        if (input[i].name == "Carmen Sandiego") {
-
-        var image = 'carmen.png';
-
-        var marker1 = new google.maps.Marker({
-                position: pos,
+	var image = 'carmen.png'; 
+	} else if (input[i].name == "Waldo") {
+	var image = 'waldo.png';
+	}
+        
+	var marker = new google.maps.Marker({
+		position: pos,
                 title: input[i].name,
                 icon: image
                 });
@@ -131,31 +135,12 @@ function renderCW() {
 
         var infowindow = new google.maps.InfoWindow();
 
-        google.maps.event.addListener(marker1, 'click', function() {
-                infowindow.setContent(marker1.title);
-                infowindow.open(map,marker1);
-                });
-
-        } else if (input[i].name == "Waldo") {
-        var image = 'waldo.png';
-
-        var marker2 = new google.maps.Marker({
-                position: pos,
-                title: input[i].name,
-                icon: image
-                });
-        marker.setMap(map);
-
-        var infowindow = new google.maps.InfoWindow();
-
-        google.maps.event.addListener(marker2, 'click', function() {
-                infowindow.setContent(marker2.title);
-                infowindow.open(map,marker2);
-                });
-        }
-        }
+        google.maps.event.addListener(marker, 'click', function() {
+                infowindow.setContent(marker.title);
+                infowindow.open(map,marker);
+                });	
+	}
 }
-
 function distcalc(lat1, lng1, lat2, lng2) {
 
 	//from www.movable-type.co.uk/scripts/latlong.html
