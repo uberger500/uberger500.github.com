@@ -63,10 +63,6 @@ function Tcallback() {
 	try {
 		if (Trequest.readyState == 4 && Trequest.status == 200) {
            		input = JSON.parse(Trequest.responseText);
-         		console.log(input);		
-console.log(input[0].InformationType);
-console.log(input[1].PlatformKey);
-console.log(input[2].PlatformKey);
 		}         		
 		else { 
 			if(Trequest.readyState == 4 && Trequest.status == 0) {
