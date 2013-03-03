@@ -108,6 +108,7 @@ function renderCW() {
 	
 	pos = new google.maps.LatLng(input[i].loc.latitude, input[i].loc.longitude);
          console.log(input[i].loc.latitude);       
+	console.log(input[i].name);
 	if (input[i].name == "Carmen Sandiego") {
 
 	var image = 'carmen.png'; 
