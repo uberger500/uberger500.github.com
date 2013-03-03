@@ -64,13 +64,9 @@ function Tcallback() {
         try {
                 if (Trequest.readyState == 4 && Trequest.status == 200) {
                         input = JSON.parse(Trequest.responseText);
-                        console.log(input);
-console.log(input[0].InformationType);
-console.log(input[1].PlatformKey);
-console.log(input[2].PlatformKey);
                 }
                 else {
-                        if((Trequest.readyState == 4 && Trequest.status == 0)|| (Trequest.stsus == 324)) {
+                        if((Trequest.readyState == 4 && Trequest.status == 0)|| (Trequest.status == 324)) {
                                 throw "noresponse";
                                 }
                         }
@@ -112,7 +108,7 @@ function renderCW() {
 	for (i=0; input.length; i++) {
 
 	pos = new google.maps.LatLng(input[i].loc.latitude, input[i].loc.longitude);
-                
+console.log("hellofromrenderCW");                
 	if (input[i].name == "Carmen Sandiego") {
 
 	var image = 'carmen.png'; 
