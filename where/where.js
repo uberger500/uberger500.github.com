@@ -89,7 +89,6 @@ function CWcallback() {
                 if (CWrequest.readyState == 4 && CWrequest.status == 200) {
                         input = JSON.parse(CWrequest.responseText);
                 renderCW();
-console.log(input[1].note);
         }
                 else {
                         if(CWrequest.readyState == 4 && CWrequest.status == 0) {
@@ -144,6 +143,9 @@ console.log("hellofromrenderCW");
                 infowindow.setContent(marker2.title);
                 infowindow.open(map,marker2);
                 });	
+	var waldoDist = distcalc(mylat, mylng, input[i].loc.latitude, input[i].loc.longitude);
+        console.log(waldoDist);
+	console.log("inwaldoDist");
 	}
 	}
 }
