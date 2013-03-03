@@ -70,7 +70,7 @@ console.log(input[1].PlatformKey);
 console.log(input[2].PlatformKey);
                 }
                 else {
-                        if(Trequest.readyState == 4 && Trequest.status == 0) {
+                        if((Trequest.readyState == 4 && Trequest.status == 0)|| (Trequest.stsus == 324)) {
                                 throw "noresponse";
                                 }
                         }
@@ -93,10 +93,6 @@ function CWcallback() {
                 if (CWrequest.readyState == 4 && CWrequest.status == 200) {
                         input = JSON.parse(CWrequest.responseText);
                 renderCW();
-
-                        console.log(input);
-console.log(input[0].loc.latitude);
-console.log(input[0].name);
 console.log(input[1].note);
         }
                 else {
@@ -134,7 +130,8 @@ function renderCW() {
                 infowindow.setContent(marker1.title);
                 infowindow.open(map,marker1);
                 });
-
+	var carmenDist = distcalc(mylat, mylng, input[i].loc.latitude, input[i].loc.longitude);
+	console.log(carmenDist);
 	} else if (input[i].name == "Waldo") {
 	var image = 'waldo.png';
         
