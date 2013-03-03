@@ -129,7 +129,7 @@ console.log("hellofromrenderCW");
 	console.log(carmenDist);
 	} else if (input[i].name == "Waldo") {
 	var image = 'waldo.png';
-        
+console.log("inwaldoDist1");        
 	var marker2 = new google.maps.Marker({
 		position: pos,
                 title: input[i].name,
@@ -151,7 +151,7 @@ console.log("hellofromrenderCW");
 }
 
 function distcalc(lat1, lng1, lat2, lng2) {
-
+console.log("inwaldoDist3");
 	//from www.movable-type.co.uk/scripts/latlong.html
 	var R = 6371; 
 	var dLat = (lat2-lat1).toRad();
