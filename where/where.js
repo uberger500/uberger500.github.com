@@ -253,9 +253,9 @@ function initialize()
                 tmarkers.push(new google.maps.Marker({position: st, title: "Braintree Station", icon: timage}));
                 braintreebranch.push(st);
 
-		for (var m in tmarkers) {
-			tmarkers[m].setMap(map);
-		}
+	//	for (var m in tmarkers) {
+	//		tmarkers[m].setMap(map);
+	//	}
 		
 		redLine = new google.maps.Polyline({
 		path: stations,
@@ -263,7 +263,7 @@ function initialize()
 		strokeOpacity: 1.0,
 		strokeWeight: 10
 		});
-		redLine.setMap(map);	
+	//	redLine.setMap(map);	
 
                 redLineAshmont = new google.maps.Polyline({
                 path: ashmontbranch,
@@ -271,7 +271,7 @@ function initialize()
                 strokeOpacity: 1.0,
                 strokeWeight: 10
                 });
-                redLineAshmont.setMap(map);
+         //       redLineAshmont.setMap(map);
 
                 redLineBraintree = new google.maps.Polyline({
                 path: braintreebranch,
@@ -279,7 +279,7 @@ function initialize()
                 strokeOpacity: 1.0,
                 strokeWeight: 10
                 });
-                redLineBraintree.setMap(map);
+       //         redLineBraintree.setMap(map);
 
 
 		getMyLocation();
