@@ -61,25 +61,29 @@ function Tparse() {
 	}
 
 function Tcallback() {
-	try {
-		if (Trequest.readyState == 4 && Trequest.status == 200) {
-           		input = JSON.parse(Trequest.responseText);
-		}         		
-		else { 
-			if(Trequest.readyState == 4 && Trequest.status == 0) {
-				throw "noresponse";
-				}
-			}
-	}
-	catch(error) {
-		if (error == "noresponse") {
-		alert("no MBTA data returned");
-		}
-	}
+        try {
+                if (Trequest.readyState == 4 && Trequest.status == 200) {
+                        input = JSON.parse(Trequest.responseText);
+                        console.log(input);
+console.log(input[0].InformationType);
+console.log(input[1].PlatformKey);
+console.log(input[2].PlatformKey);
+                }
+                else {
+                        if(Trequest.readyState == 4 && Trequest.status == 0) {
+                                throw "noresponse";
+                                }
+                        }
+        }
+        catch(error) {
+                if (error == "noresponse") {
+                alert("no MBTA data returned");
+                }
+        }
 
-}	
+}
 function CWparse() {
-	CWrequest.open("GET", "http://messagehub.herokuapp.com/a3.json", true);
+        CWrequest.open("GET", "http://messagehub.herokuapp.com/a3.json", true);
         CWrequest.send(null);
         CWrequest.onreadystatechange = CWcallback;
 }
@@ -88,8 +92,13 @@ function CWcallback() {
         try {
                 if (CWrequest.readyState == 4 && CWrequest.status == 200) {
                         input = JSON.parse(CWrequest.responseText);
-		renderCW();
-	}
+                renderCW();
+
+                        console.log(input);
+console.log(input[0].loc.latitude);
+console.log(input[0].name);
+console.log(input[1].note);
+        }
                 else {
                         if(CWrequest.readyState == 4 && CWrequest.status == 0) {
                                 throw "noresponse";
@@ -103,17 +112,17 @@ function CWcallback() {
         }
 }
 
-function renderCW() {
-	for (i=0; input.length; i++) {
-	
-	pos = new google.maps.LatLng(input[i].loc.latitude, input[i].loc.longitude);
-         console.log(input[i].loc.latitude);       
-	console.log(input[i].name);
-	if (input[i].name == "Carmen Sandiego") {
 
-	var image = 'carmen.png'; 
-	
-	var marker1 = new google.maps.Marker({
+function renderCW() {
+        for (i=0; input.length; i++) {
+
+        pos = new google.maps.LatLng(input[i].loc.latitude, input[i].loc.longitude);
+
+        if (input[i].name == "Carmen Sandiego") {
+
+        var image = 'carmen.png';
+
+        var marker1 = new google.maps.Marker({
                 position: pos,
                 title: input[i].name,
                 icon: image
@@ -127,11 +136,11 @@ function renderCW() {
                 infowindow.open(map,marker1);
                 });
 
-	} else if (input[i].name == "Waldo") {
-	var image = 'waldo.png';
-        
-	var marker2 = new google.maps.Marker({
-		position: pos,
+        } else if (input[i].name == "Waldo") {
+        var image = 'waldo.png';
+
+        var marker2 = new google.maps.Marker({
+                position: pos,
                 title: input[i].name,
                 icon: image
                 });
@@ -142,10 +151,11 @@ function renderCW() {
         google.maps.event.addListener(marker2, 'click', function() {
                 infowindow.setContent(marker2.title);
                 infowindow.open(map,marker2);
-                });	
-	}
-	}
+                });
+        }
+        }
 }
+
 function distcalc(lat1, lng1, lat2, lng2) {
 
 	//from www.movable-type.co.uk/scripts/latlong.html
