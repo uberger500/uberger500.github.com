@@ -37,9 +37,10 @@ function renderMap() {
         
 	var marker = new google.maps.Marker({
 		position: mypos,
-                title: "I am here",
+                title: "You are here",
                 icon: image
                 });
+
         marker.setMap(map);
 
         var infowindow = new google.maps.InfoWindow();
@@ -106,9 +107,9 @@ function renderCW() {
 	for (i=0; input.length; i++) {
 	
 	pos = new google.maps.LatLng(input[i].loc.latitude, input[i].loc.longitude);
-                
+         console.log(input[i].loc.latitude);       
 	if (input[i].name == "Carmen Sandiego") {
-console.log(input[i].loc.latitude);	
+
 	var image = 'carmen.png'; 
 	
 	var marker1 = new google.maps.Marker({
