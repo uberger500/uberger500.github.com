@@ -49,6 +49,10 @@ function renderMap() {
                 infowindow.setContent(marker.title);
                 infowindow.open(map,marker);
                 });
+	nearestStation = shortestdist(mylat, mylng, tmarkers);
+	marker.title += "<br/>" + "The nearest Red Line station is " + nearestStation[0].title + 
+		"<br/>" + "and the distance is " + nearestStation[0].distance + " miles."; 
+
 	Tparse();
 	CWparse();
 	
@@ -64,6 +68,10 @@ function Tcallback() {
         try {
                 if (Trequest.readyState == 4 && Trequest.status == 200) {
                         input = JSON.parse(Trequest.responseText);
+		for (var o in tmarkers) {
+		tmarkers[o].title += "<br/>" + input[o].Time;
+		}
+console.log(input);
                 }
                 else {
                         if((Trequest.readyState == 4 && Trequest.status == 0)|| (Trequest.status == 324)) {
@@ -107,14 +115,13 @@ function renderCW() {
 	for (i=0; input.length; i++) {
 
 	pos = new google.maps.LatLng(input[i].loc.latitude, input[i].loc.longitude);
-console.log("hellofromrenderCW");                
 	if (input[i].name == "Carmen Sandiego") {
 
 	var image = 'carmen.png'; 
 
 	var marker1 = new google.maps.Marker({
                 position: pos,
-                title: input[i].name,
+                title: input[i].name + " is here!",
                 icon: image
                 });
         marker1.setMap(map);
@@ -126,59 +133,59 @@ console.log("hellofromrenderCW");
                 infowindow.open(map,marker1);
                 });
 	var carmenDist = distcalc(mylat, mylng, input[i].loc.latitude, input[i].loc.longitude);
-	console.log(carmenDist);
+	marker1.title += "<br/>" + "Carmen's distance to you is: " + carmenDist + " miles.";
+
 	} else if (input[i].name == "Waldo") {
 	var image = 'waldo.png';
-console.log("inwaldoDist1");        
 	var marker2 = new google.maps.Marker({
 		position: pos,
-                title: input[i].name,
+                title: input[i].name + " is here!",
                 icon: image
                 });
         marker2.setMap(map);
 
         var infowindow = new google.maps.InfoWindow();
-
-        google.maps.event.addListener(marker2, 'click', function() {
+        
+	google.maps.event.addListener(marker2, 'click', function() {
                 infowindow.setContent(marker2.title);
                 infowindow.open(map,marker2);
                 });	
-	var waldoDist = distcalc(mylat, mylng, input[i].loc.latitude, input[i].loc.longitude);
-        console.log(waldoDist);
-	console.log("inwaldoDist");
+        var waldoDist = distcalc(mylat, mylng, input[i].loc.latitude, input[i].loc.longitude);
+        marker2.title += "<br/>" + "Waldo's distance to you is: "  + waldoDist + " miles.";
+
 	}
 	}
 }
 
 function distcalc(lat1, lng1, lat2, lng2) {
-console.log("inwaldoDist3");
 	//from www.movable-type.co.uk/scripts/latlong.html
 	var R = 6371; 
-	var dLat = (lat2-lat1).toRad();
-	var dLon = (lon2-lon1).toRad();
-	var lat1 = lat1.toRad();
-	var lat2 = lat2.toRad();
+	var dLat = (lat2-lat1) * Math.PI / 180;
+	var dLng = (lng2-lng1) * Math.PI / 180;
+	var lat1 = lat1 * Math.PI / 180;
+	var lat2 = lat2 * Math.PI / 180;
 
 	var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-        	Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+        	Math.sin(dLng/2) * Math.sin(dLng/2) * Math.cos(lat1) * Math.cos(lat2); 
 	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-	var d = R * c;
-console.log("inwaldoDist4");
-console.log(d);
-	return d;
+	var d = (R * c)*0.6214; //in miles
+	return d.toFixed(2);
 }
 
 function shortestdist(lat, lng, stations) {
+	var closestStation = [];
 	var shortest = 9999;
 	var shortestid;
 	for (i=0; i <stations.length; i++) {
-		var testdist = distcalc(lat, lng, stations[i].loc.latitude, stations[i].loc.longitude)
+		var testdist = distcalc(lat, lng, stations[i].position.hb, stations[i].position.ib)
 		if (testdist <= shortest) {
 			shortest = testdist;
-			shortestid = stations[i].PlatformKey;
+			shortestid = stations[i].title;
 	}		
 	}
-	return shortest;
+
+	closestStation[0]= {'title': shortestid, 'distance': shortest};
+	return closestStation;
 	}
 
 function initialize()
@@ -194,7 +201,6 @@ function initialize()
 		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
 		var timage = 'timage.png';
-
 		st = new google.maps.LatLng(42.395428,-71.142483);
 		tmarkers.push(new google.maps.Marker({position: st, title: "Alewife Station", icon: timage}));
 		stations.push(st);
@@ -264,9 +270,9 @@ function initialize()
                 tmarkers.push(new google.maps.Marker({position: st, title: "Braintree Station", icon: timage}));
                 braintreebranch.push(st);
 
-	//	for (var m in tmarkers) {
-	//		tmarkers[m].setMap(map);
-	//	}
+		for (var m in tmarkers) {
+			tmarkers[m].setMap(map);
+		}
 		
 		redLine = new google.maps.Polyline({
 		path: stations,
@@ -274,7 +280,7 @@ function initialize()
 		strokeOpacity: 1.0,
 		strokeWeight: 10
 		});
-	//	redLine.setMap(map);	
+		redLine.setMap(map);	
 
                 redLineAshmont = new google.maps.Polyline({
                 path: ashmontbranch,
@@ -282,7 +288,7 @@ function initialize()
                 strokeOpacity: 1.0,
                 strokeWeight: 10
                 });
-         //       redLineAshmont.setMap(map);
+                redLineAshmont.setMap(map);
 
                 redLineBraintree = new google.maps.Polyline({
                 path: braintreebranch,
@@ -290,8 +296,15 @@ function initialize()
                 strokeOpacity: 1.0,
                 strokeWeight: 10
                 });
-       //         redLineBraintree.setMap(map);
-
+                redLineBraintree.setMap(map);
+		var infowindow = [];	
+		for (var t in tmarkers) {(function(t) {
+        	google.maps.event.addListener(tmarkers[t], 'click', function() {
+                infowindow[t] = new google.maps.InfoWindow({content: tmarkers[t].title});
+                infowindow[t].open(map,tmarkers[t]);
+                });
+		})(t);
+		}
 
 		getMyLocation();
 	}
