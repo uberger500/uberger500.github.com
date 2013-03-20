@@ -64,7 +64,7 @@ function renderMap() {
 
 // send MBTA request
 function tParse() {
-	tRequest.open("GET", "http://mbtamap-cedar.herokuapp.com/mapper/redline.json", true);
+	tRequest.open("GET", "http://mbtamap.herokuapp.com/mapper/redline.json", true);
 	tRequest.send(null);
 	tRequest.onreadystatechange = tCallback;
 }
